@@ -1,0 +1,122 @@
+<div class="container">
+  <h2 id="name">iBloc List</h2>
+
+  <div ng-include="'app/main/page-links.html'"></div>
+
+  <!-- Todos input -->
+  <form role="form" ng-submit="addTodo()">
+    <div class="row">
+      <div class="input-group">
+        <input type="text" ng-model="todo.text" placeholder="What needs to be done?" class="form-control">
+
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Add">
+        </span>
+      </div>
+      <div class="input-group">
+        <textarea ng-model="todo.description" placeholder="Add a description..." class="form-control"></textarea>
+      </div>
+        
+      <div class="input-group">
+        <label for="">Priority</label>
+        <label class="radio-inline">
+          <input type="radio" name="priority" value="high" ng-model="todo.priority"> High
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="priority" value="medium" ng-model="todo.priority"> Medium
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="priority" value="low" ng-model="todo.priority"> Low
+        </label>
+      </div>
+        
+      <div class="input-group">
+        <label for="">Status</label>
+        <label class="radio-inline">
+          <input type="radio" name="status" value="active" ng-model="todo.status"> Active
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="status" value="completed" ng-model="todo.status"> Completed
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="status" value="expired" ng-model="todo.status"> Expired
+        </label>
+      </div>
+    </div>
+  </form>
+  
+  <div class="col-md-4">
+    <h1>Active List</h1>
+
+    <div>
+      <progressbar 
+        class="progress-striped" 
+        value="completedPercentage" 
+        type="warning">
+          {{ completedPercentage }}%
+        </progressbar>
+    </div>
+    
+    <!-- Todos list -->
+    <ul class="form-group" ng-repeat="todo in todos | status:'active' ">
+      <li> 
+        <p>{{ todo.text }}</p>
+        <p>{{ timeFromNow(todo) }}</p>
+        <p>Status: {{ todo.status }}</p>
+        <p>Priority: {{ todo.priority }}</p>
+        
+        <p class="todo-description" ng-if="todo.description.length > 0">
+          {{ todo.description }}
+        </p>
+
+        <p>
+          <button class="btn btn-success" ng-click="changeTodoStatus(todo, 'completed')">
+            <i class="glyphicon glyphicon-ok"></i>
+          </button>
+
+          <button class="btn btn-success" ng-click="changeTodoStatus(todo, 'expired')">
+            mark as expired
+          </button>
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Todos list -->
+  <!--<div id="section">
+  <div class="col-md-4">
+    <h1>Completed List</h1>
+    <ul class="form-group">
+      <li ng-repeat="todo in todos | status:'completed' "> 
+        <p>{{ todo.text }}</p>
+        <p>Status: {{ todo.status }}</p>
+        <p>
+          <button class="btn btn-success" ng-click="changeTodoStatus(todo, 'active')">
+            <i class="glyphicon glyphicon-ok"></i>
+          </button>
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>-->
+
+  <!-- Todos list -->
+  <!--<div class="col-md-4">
+    <h1>Expired List</h1>
+    <ul class="form-group">
+      <li ng-repeat="todo in todos | status:'expired' "> 
+        <p>{{ todo.text }}</p>
+        <p>Status: {{ todo.status }}</p>
+        <p>
+          <button class="btn btn-success" ng-click="changeTodoStatus(todo, 'active')">
+            <i class="glyphicon glyphicon-ok"></i>
+          </button>
+
+          <button class="btn btn-success" ng-click="changeTodoStatus(todo, 'completed')">
+            mark as completed
+          </button>
+        </p>
+      </li>
+    </ul>
+  </div>-->
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>iBloc-iT Expired</h2>
+  <div ng-include="'app/main/page-links.html'"></div>
+
+    <!-- Todos list -->
+    <div class="col-md-4">
+      <ul class="form-group" ng-repeat="todo in todos | status:'expired' ">
+        <li> 
+          <p>{{ todo.text }}</p>
+
+          <p>{{ timeFromNow(todo) }}</p>
+          <p>Status: {{ todo.status }}</p>
+          <p>
+            <button class="btn btn-success" ng-click="changeTodoStatus(todo, 'active')">
+              <i class="glyphicon glyphicon-ok"></i>
+            </button>
+          </p>
+        </li>
+      </ul>
+  </div>
+</div>

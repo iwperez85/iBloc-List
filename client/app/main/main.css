@@ -44,11 +44,11 @@ h2 {
 
 
 .col-md-4 {
-     background-color: lightgrey;
-    width: 300px;
-    padding: 25px;
-    border: 25px solid navy;
-    margin: 25px;    
+     background-color: #C0C0C0;
+     width: 300px;
+     padding: 25px;
+     border: 25px solid navy;
+     margin: 25px;    
 }
 
 .input-group {
@@ -56,21 +56,47 @@ h2 {
     border-width: medium;
     border-color: #330099;
     text-shadow: 0 0 3px #FF0000, 0 0 5px red;
-    font-size: 18px;
-
+    font-size: 20px;
+    background-color: #C0C0C0;
 }
 
 ul li {
     list-style-type: none;
 }
 
-#section {
-    text-decoration: underline;
 
-}
 
 #name:hover {
     background-color: #000066;
+}
+
+.box {
+    width: 140px;
+    padding: 5px;
+    border: 10px groove red;
+    border-radius: 25px;
+    margin: 5px;
+    background-color: #C0C0C0;
+    color: navy;
 
 }
+
+a {
+    font-size: 20px;
+
+}
+
+a:visited {
+    color: navy;
+}
+
+a:hover {
+    color: yellow;
+    font-size:200%;
+    background: blue;
+    font-family: Impact;
+}
+
+
+
 

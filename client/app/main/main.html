@@ -2,6 +2,7 @@
   <h2 id="name">iBloc List</h2>
 
   <div ng-include="'app/main/page-links.html'"></div>
+  
 
   <!-- Todos input -->
   <form role="form" ng-submit="addTodo()">
@@ -20,29 +21,15 @@
       <div class="input-group">
         <label for="">Priority</label>
         <label class="radio-inline">
-          <input type="radio" name="priority" value="high" ng-model="todo.priority"> High
+          <input type="radio" name="priority" value="High" ng-model="todo.priority"> High
         </label>
         <label class="radio-inline">
-          <input type="radio" name="priority" value="medium" ng-model="todo.priority"> Medium
+          <input type="radio" name="priority" value="Medium" ng-model="todo.priority"> Medium
         </label>
         <label class="radio-inline">
-          <input type="radio" name="priority" value="low" ng-model="todo.priority"> Low
+          <input type="radio" name="priority" value="Low" ng-model="todo.priority"> Low
         </label>
-      </div>
-        
-      <div class="input-group">
-        <label for="">Status</label>
-        <label class="radio-inline">
-          <input type="radio" name="status" value="active" ng-model="todo.status"> Active
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="status" value="completed" ng-model="todo.status"> Completed
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="status" value="expired" ng-model="todo.status"> Expired
-        </label>
-      </div>
-    </div>
+      </div>  
   </form>
   
   <div class="col-md-4">
@@ -50,25 +37,25 @@
 
     <div>
       <progressbar 
-        class="progress-striped" 
+        class="progress-striped active" 
         value="completedPercentage" 
-        type="warning">
+        type="info">
           {{ completedPercentage }}%
         </progressbar>
     </div>
     
     <!-- Todos list -->
     <ul class="form-group" ng-repeat="todo in todos | status:'active' ">
-      <li> 
+      <li class="box"> 
         <p>{{ todo.text }}</p>
-        <p>{{ timeFromNow(todo) }}</p>
-        <p>Status: {{ todo.status }}</p>
-        <p>Priority: {{ todo.priority }}</p>
-        
         <p class="todo-description" ng-if="todo.description.length > 0">
           {{ todo.description }}
         </p>
-
+        <p>{{ timeFromNow(todo) }}</p>
+        <p>Status: {{ todo.status }}</p>
+        <p>Priority: {{ todo.priority }}</p>
+      </li>
+        
         <p>
           <button class="btn btn-success" ng-click="changeTodoStatus(todo, 'completed')">
             <i class="glyphicon glyphicon-ok"></i>
@@ -78,7 +65,6 @@
             mark as expired
           </button>
         </p>
-      </li>
     </ul>
   </div>
 

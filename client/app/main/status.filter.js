@@ -18,7 +18,7 @@ angular.module('iBloc-iTApp')
           filteredTodos.push(todo);
         }
       });
-
+      
       return filteredTodos;
     };
   });
